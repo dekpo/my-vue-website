@@ -1,16 +1,27 @@
 <script setup>
 import { ref } from 'vue'
-
 const portfolio = ref(null);
-fetch('http://127.0.0.1:8000/api/picture?page=1&limit=6')
+
+let page = 1;
+const nextPage = () => {
+  page++;
+  console.log('page:',page);
+  loadPic(page);
+}
+
+const loadPic = (page=1)=>{
+  fetch('http://127.0.0.1:8000/api/picture?page='+page+'&limit=6')
   .then((res) => res.json())
   .then((json) => {
     portfolio.value = json;
     console.log(json);
-  })
+  });
+}
+(loadPic)()
 </script>
 
 <template>
+<button @click="nextPage">Next Page</button>
 <!-- début container -->
   <div class="container-fluid">
     <div class="row">
