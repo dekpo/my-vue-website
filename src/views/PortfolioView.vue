@@ -28,6 +28,7 @@ const loadPic = (page = 1) => {
       portfolio.value = json;
       console.log(json);
     });
+  displayPage.value = page;
 }
 (loadPic)()
 </script>
@@ -48,9 +49,9 @@ const loadPic = (page = 1) => {
             <li v-bind:class="{'page-item': true, 'disabled': displayPage==1?true:false }" >
               <a class="page-link" href="#" @click="nextPage('prev')">Previous</a>
             </li>
-            <li class="page-item active"><a class="page-link" href="#">{{displayPage}}</a></li>
-            <li class="page-item"><a class="page-link" href="#">{{displayPage+1}}</a></li>
-            <li class="page-item"><a class="page-link" href="#">{{displayPage+2}}</a></li>
+            <li class="page-item active"><a class="page-link" href="#" @click="loadPic(displayPage)">{{displayPage}}</a></li>
+            <li class="page-item"><a class="page-link" href="#" @click="loadPic(displayPage+1)">{{displayPage+1}}</a></li>
+            <li class="page-item"><a class="page-link" href="#" @click="loadPic(displayPage+2)">{{displayPage+2}}</a></li>
             <li class="page-item">
               <a class="page-link" href="#" @click="nextPage('next')">Next</a>
             </li>
