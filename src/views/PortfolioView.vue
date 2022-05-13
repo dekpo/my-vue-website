@@ -66,7 +66,9 @@ const loadPic = (page = 1) => {
       <div v-for="pic in portfolio" class="col-12 col-md-4 mb-3">
         <!-- début card -->
         <div class="card">
-          <img v-bind:src="pic.url" class="card-img-top" alt="...">
+          <RouterLink v-bind:to="'/portfolio/detail/'+pic.id">
+            <img v-bind:src="pic.url" class="card-img-top" v-bind:alt="pic.title">
+          </RouterLink>
           <div class="card-body">
             <h5 class="card-title">{{ pic.title }}</h5>
             <p class="card-text">{{ pic.description }}</p>

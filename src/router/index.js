@@ -21,6 +21,11 @@ const router = createRouter({
       path: '/portfolio',
       name: 'portfolio',
       component: () => import('../views/PortfolioView.vue')
+    },
+    {
+      path: '/portfolio/detail/:id',
+      name: 'detail',
+      component: () => import('../views/DetailView.vue')
     }
   ],
   linkActiveClass:'active'
