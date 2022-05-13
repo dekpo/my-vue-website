@@ -9,8 +9,8 @@ const nextPage = () => {
   loadPic(page);
 }
 
-const loadPic = (page=1)=>{
-  fetch('http://127.0.0.1:8000/api/picture?page='+page+'&limit=6')
+const loadPic = (p=1)=>{
+  fetch('https://picsum.photos/v2/list?page='+p+'&limit=6')
   .then((res) => res.json())
   .then((json) => {
     portfolio.value = json;
@@ -35,10 +35,10 @@ const loadPic = (page=1)=>{
       <div v-for="pic in portfolio" class="col-12 col-md-4 mb-3">
         <!-- début card -->
         <div class="card">
-          <img v-bind:src="pic.url" class="card-img-top" alt="...">
+          <img v-bind:src=" 'https://picsum.photos/id/'+pic.id+'/320/240' " class="card-img-top" alt="...">
           <div class="card-body">
-            <h5 class="card-title">{{ pic.title }}</h5>
-            <p class="card-text">{{ pic.description }}</p>
+            <h5 class="card-title">{{ pic.author }}</h5>
+            <p class="card-text">{{ pic.url }}</p>
             <a v-bind:href="pic.url" target="_blank" class="btn btn-primary">Go somewhere</a>
           </div>
         </div>
